@@ -54,7 +54,7 @@ pub enum PrimitiveType {
 }
 
 #[typetag::serde(tag = "primitive")]
-pub trait Primitive: Send {
+pub trait Primitive: Send + Sync {
     fn is_eq(&self, other: &dyn Primitive) -> bool;
     fn is_cmp(&self, other: &dyn Primitive) -> Option<Ordering>;
     fn do_add(&self, other: &dyn Primitive) -> Result<Box<dyn Primitive>, String>;
