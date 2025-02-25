@@ -73,6 +73,7 @@ pub const COMPONENT: &str = "Component";
 pub const FLOW: &str = "flow";
 pub const STEP: &str = "step";
 pub const SAY: &str = "say";
+pub const SHOUT: &str = "shout";
 pub const DEBUG_ACTION: &str = "debug";
 pub const LOG_ACTION: &str = "log";
 pub const USE: &str = "use";
@@ -93,7 +94,7 @@ pub const CONTINUE: &str = "continue";
 pub const RETURN: &str = "return";
 
 pub const FN_SCOPE_REJECTED: &[&str] =
-    &[SAY, GOTO, REMEMBER, FORGET, USE, HOLD, HOLD_SECURE, BREAK];
+    &[SAY, SHOUT, GOTO, REMEMBER, FORGET, USE, HOLD, HOLD_SECURE, BREAK];
 
 pub const TRUE: &str = "true";
 pub const FALSE: &str = "false";
@@ -122,17 +123,17 @@ pub const TYPES: &[&str] = &[
 
 pub const RESERVED: &[&str] = &[
     FOREACH, WHILE, IF, ELSE, IMPORT, CONST, INSERT, AS, IN, DO, FROM, EVENT, FLOW, FILE, STEP,
-    SAY, USE, HOLD, GOTO, MATCH, _METADATA, _MEMORY, _ENV, DEFAULT, REMEMBER, FORGET, TRUE, FALSE,
+    SAY, SHOUT, USE, HOLD, GOTO, MATCH, _METADATA, _MEMORY, _ENV, DEFAULT, REMEMBER, FORGET, TRUE, FALSE,
     NULL, BREAK, COMPONENT,
 ];
 
 pub const UTILISATION_RESERVED: &[&str] = &[
-    FOREACH, WHILE, IF, ELSE, IMPORT, CONST, INSERT, AS, DO, FLOW, STEP, SAY, USE, HOLD, GOTO,
+    FOREACH, WHILE, IF, ELSE, IMPORT, CONST, INSERT, AS, DO, FLOW, STEP, SAY, SHOUT, USE, HOLD, GOTO,
     MATCH, REMEMBER, FORGET, BREAK, COMPONENT,
 ];
 
 pub const ASSIGNATION_RESERVED: &[&str] = &[
-    FOREACH, WHILE, IF, ELSE, IMPORT, AS, DO, EVENT, FLOW, STEP, SAY, USE, HOLD, GOTO, MATCH,
+    FOREACH, WHILE, IF, ELSE, IMPORT, AS, DO, EVENT, FLOW, STEP, SAY, SHOUT, USE, HOLD, GOTO, MATCH,
     REMEMBER, FORGET, _METADATA, _MEMORY, _ENV, TRUE, FALSE, NULL, BREAK, COMPONENT,
 ];
 

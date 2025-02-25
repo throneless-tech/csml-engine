@@ -260,6 +260,18 @@ where
     Ok((s, Expr::ObjectExpr(ObjectType::Say(Box::new(expr)))))
 }
 
+fn parse_shout<'a, E>(s: Span<'a>) -> IResult<Span<'a>, Expr, E>
+where
+    E: ParseError<Span<'a>> + ContextError<Span<'a>>,
+{
+    let (s, name) = preceded(comment, get_string)(s)?;
+    let (s, ..) = get_tag(name, SHOUT)(s)?;
+
+    let (s, expr) = parse_action_argument(s, parse_operator)?;
+
+    Ok((s, Expr::ObjectExpr(ObjectType::Shout(Box::new(expr)))))
+}
+
 fn parse_debug<'a, E>(s: Span<'a>) -> IResult<Span<'a>, Expr, E>
 where
     E: ParseError<Span<'a>> + ContextError<Span<'a>>,
@@ -436,6 +448,7 @@ where
         parse_goto,
         parse_previous,
         parse_say,
+        parse_shout,
         parse_remember,
         parse_forget,
         parse_hold,

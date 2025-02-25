@@ -117,6 +117,25 @@ pub fn match_actions(
                 Ok(Message::add_to_message(msg_data, MessageType::Msg(msg)))
             }
         }
+        ObjectType::Shout(arg) => {
+            let lit =
+                expr_to_literal(arg, &DisplayWarnings::On, None, data, &mut msg_data, sender)?;
+
+            // check if it is secure variable
+            if lit.secure_variable {
+                let err = gen_error_info(
+                    Position::new(lit.interval, &data.context.flow),
+                    "Secure variable can not be displayed".to_owned(),
+                );
+
+                MSG::send_error_msg(&sender, &mut msg_data, Err(err));
+                Ok(msg_data)
+            } else {
+                let msg = Message::new(lit, &data.context.flow)?;
+                MSG::send(&sender, MSG::Message(msg.clone()));
+                Ok(Message::add_to_message(msg_data, MessageType::Msg(msg)))
+            }
+        }
         ObjectType::Debug(args, interval) => {
             let args = resolve_fn_args(args, data, &mut msg_data, &DisplayWarnings::On, sender)?;
 
