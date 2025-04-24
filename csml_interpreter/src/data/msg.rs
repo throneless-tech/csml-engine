@@ -15,6 +15,7 @@ pub enum MSG {
     Forget(ForgetMemory),
     Message(Message),
     Shout(Message),
+    Whisper(Message),
     Log {
         flow: String,
         line: u32,

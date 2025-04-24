@@ -22,6 +22,7 @@ pub const ERROR_GOTO_IN_FN: &str = "'goto' action is not allowed in function sco
 pub const ERROR_REMEMBER_IN_FN: &str = "'remember' action is not allowed in function scope";
 pub const ERROR_SAY_IN_FN: &str = "'say' action is not allowed in function scope";
 pub const ERROR_SHOUT_IN_FN: &str = "'shout' action is not allowed in function scope";
+pub const ERROR_WHISPER_IN_FN: &str = "'whisper' action is not allowed in function scope";
 pub const ERROR_RETURN_IN_FN: &str = "'return' action is not allowed outside function scope";
 pub const ERROR_BREAK_IN_LOOP: &str = "'break' action is not allowed outside loop";
 pub const ERROR_CONTINUE_IN_LOOP: &str = "'continue' action is not allowed outside loop";
@@ -822,6 +823,20 @@ fn validate_scope(
                         convert_error_from_interval(
                             Span::new(linter_info.raw_flow),
                             ERROR_SHOUT_IN_FN.to_owned(),
+                            interval_from_expr(value),
+                        ),
+                    ));
+                }
+
+                validate_expr_literals(value, state, linter_info);
+            }
+            Expr::ObjectExpr(ObjectType::Whisper(value)) => {
+                if state.in_function > 0 {
+                    linter_info.errors.push(gen_error_info(
+                        Position::new(interval_from_expr(value), linter_info.flow_name),
+                        convert_error_from_interval(
+                            Span::new(linter_info.raw_flow),
+                            ERROR_WHISPER_IN_FN.to_owned(),
                             interval_from_expr(value),
                         ),
                     ));

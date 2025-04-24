@@ -246,6 +246,7 @@ pub enum ObjectType {
     HoldSecure(Interval),
     Say(Box<Expr>),
     Shout(Box<Expr>),
+    Whisper(Box<Expr>),
     Debug(Box<Expr>, Interval),
     Log {
         expr: Box<Expr>,
