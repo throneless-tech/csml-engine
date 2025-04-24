@@ -284,6 +284,18 @@ where
     Ok((s, Expr::ObjectExpr(ObjectType::Whisper(Box::new(expr)))))
 }
 
+fn parse_delete<'a, E>(s: Span<'a>) -> IResult<Span<'a>, Expr, E>
+where
+    E: ParseError<Span<'a>> + ContextError<Span<'a>>,
+{
+    let (s, inter) = preceded(comment, get_interval)(s)?;
+    let (s, name) = get_string(s)?;
+
+    let (s, ..) = get_tag(name, DELETE)(s)?;
+
+    Ok((s, Expr::ObjectExpr(ObjectType::Delete(inter))))
+}
+
 fn parse_debug<'a, E>(s: Span<'a>) -> IResult<Span<'a>, Expr, E>
 where
     E: ParseError<Span<'a>> + ContextError<Span<'a>>,
@@ -462,6 +474,7 @@ where
         parse_say,
         parse_shout,
         parse_whisper,
+        parse_delete,
         parse_remember,
         parse_forget,
         parse_hold,

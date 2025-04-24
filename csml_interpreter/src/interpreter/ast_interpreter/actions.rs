@@ -155,6 +155,11 @@ pub fn match_actions(
                 Ok(Message::add_to_message(msg_data, MessageType::Msg(msg)))
             }
         }
+        ObjectType::Delete(_interval) => {
+            MSG::send(&sender, MSG::Delete);
+
+            Ok(msg_data)
+        }
         ObjectType::Debug(args, interval) => {
             let args = resolve_fn_args(args, data, &mut msg_data, &DisplayWarnings::On, sender)?;
 

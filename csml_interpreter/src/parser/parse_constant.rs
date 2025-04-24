@@ -55,6 +55,7 @@ pub fn interval_from_reserved_fn(reserved_fn: &ObjectType) -> Interval {
         ObjectType::Say(expr) => interval_from_expr(expr),
         ObjectType::Shout(expr) => interval_from_expr(expr),
         ObjectType::Whisper(expr) => interval_from_expr(expr),
+        ObjectType::Delete(interval) => interval.to_owned(),
         ObjectType::Debug(_expr, interval) => interval.to_owned(),
         ObjectType::Log { interval, .. } => interval.to_owned(),
         ObjectType::Return(expr) => interval_from_expr(expr),

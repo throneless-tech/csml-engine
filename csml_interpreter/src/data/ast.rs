@@ -247,6 +247,7 @@ pub enum ObjectType {
     Say(Box<Expr>),
     Shout(Box<Expr>),
     Whisper(Box<Expr>),
+    Delete(Interval),
     Debug(Box<Expr>, Interval),
     Log {
         expr: Box<Expr>,
