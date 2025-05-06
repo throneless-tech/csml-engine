@@ -132,7 +132,7 @@ pub fn match_actions(
                 Ok(msg_data)
             } else {
                 let msg = Message::new(lit, &data.context.flow)?;
-                MSG::send(&sender, MSG::Message(msg.clone()));
+                MSG::send(&sender, MSG::Shout(msg.clone()));
                 Ok(Message::add_to_message(msg_data, MessageType::Msg(msg)))
             }
         }
@@ -151,7 +151,7 @@ pub fn match_actions(
                 Ok(msg_data)
             } else {
                 let msg = Message::new(lit, &data.context.flow)?;
-                MSG::send(&sender, MSG::Message(msg.clone()));
+                MSG::send(&sender, MSG::Whisper(msg.clone()));
                 Ok(Message::add_to_message(msg_data, MessageType::Msg(msg)))
             }
         }
