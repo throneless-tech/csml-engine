@@ -91,8 +91,7 @@ checksum = "843867be96c8daad0d758b57df9392b6d8d271134fce549de6ce169ff98a92af"
 [[package]]
 name = "boring"
 version = "5.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eb424b02b733bc0fafbe9b269db743d44126fabf2e55edaefb42762491955c9e"
+source = "git+https://github.com/signalapp/boring?tag=signal-v5.0.2#2c157897feea0c54f5eca93407a157fa90703b5f"
 dependencies = [
  "bitflags",
  "boring-sys",
@@ -104,8 +103,7 @@ dependencies = [
 [[package]]
 name = "boring-sys"
 version = "5.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "71108e4d30f6275b216e78706b438d2880a4d1503fbc40f8616a3c69401ee2e6"
+source = "git+https://github.com/signalapp/boring?tag=signal-v5.0.2#2c157897feea0c54f5eca93407a157fa90703b5f"
 dependencies = [
  "bindgen",
  "cmake",
