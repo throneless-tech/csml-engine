@@ -1532,7 +1532,7 @@ impl PrimitiveObject {
                     interval,
                     ERROR_HMAC_KEY.to_owned(),
                 )?;
-                openssl::pkey::PKey::hmac(secret.as_bytes()).unwrap()
+                boring::pkey::PKey::private_key_from_pem(secret.as_bytes()).unwrap()
             }
             _ => {
                 return Err(gen_error_info(
@@ -1542,7 +1542,7 @@ impl PrimitiveObject {
             }
         };
 
-        let sign = openssl::sign::Signer::new(algo, &key);
+        let sign = boring::sign::Signer::new(algo, &key);
         match sign {
             Ok(mut signer) => {
                 signer.update(data.as_bytes()).unwrap();
@@ -1616,7 +1616,7 @@ impl PrimitiveObject {
             }
         };
 
-        match openssl::hash::hash(algo, data.as_bytes()) {
+        match boring::hash::hash(algo, data.as_bytes()) {
             Ok(digest_bytes) => {
                 let vec = digest_bytes
                     .to_vec()
