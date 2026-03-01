@@ -1,14 +1,14 @@
 [workspace]
 members = [
     "csml_interpreter",
-    "csml_engine",
-    "csml_server",
-    "csml_cli",
-    "bindings/node/native",
-    "bindings/aws_lambda",
+    # "csml_engine",
+    # "csml_server",
+    # "csml_cli",
+    # "bindings/node/native",
+    # "bindings/aws_lambda",
 
-    "bindings/ios",
-    "bindings/android"
+    # "bindings/ios",
+    # "bindings/android"
 ]
 
 [profile.test]
