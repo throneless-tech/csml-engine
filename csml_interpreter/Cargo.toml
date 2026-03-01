@@ -43,7 +43,7 @@ urlencoding = "2.1"
 url = "2.2.2"
 rustls = { version = "0.21.12", features = ["dangerous_configuration"] }
 
-lettre = { version = "0.11.19", default-features = false, features = ["smtp-transport", "pool", "hostname", "builder", "boring-tls"] }
+# lettre = { version = "0.11.19", default-features = false, features = ["smtp-transport", "pool", "hostname", "builder", "boring-tls"] }
 
 typetag = "0.1"
 bincode = "1.3.3"
